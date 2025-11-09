@@ -1,0 +1,218 @@
+:root {
+    --bg-body: #84994F;
+    --bg-container: #FFE797;
+    --bg-form: #FCB53B;
+    --bg-table: #FFE797;
+    --text-color: #333333;
+    --title-color: #023047;
+    --btn-bg: #3a5a40;
+    --btn-text: blanchedalmond;
+    --btn-hover: #2d4530;
+    --border-color: #A72703;
+    --hover-row: #ffd670;
+    --delete-btn: #dc2f02;
+    --delete-hover: #9d0208;
+}
+
+[data-theme="dark"] {
+    --bg-body: #1a1a1a;
+    --bg-container: #2d2d2d;
+    --bg-form: #3d3d3d;
+    --bg-table: #2d2d2d;
+    --text-color: #e0e0e0;
+    --title-color: #4a9eff;
+    --btn-bg: #5a7a5c;
+    --btn-text: #ffffff;
+    --btn-hover: #4a6a4c;
+    --border-color: #555555;
+    --hover-row: #3d3d3d;
+    --delete-btn: #ff4444;
+    --delete-hover: #cc0000;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-body);
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: var(--bg-container);
+    border-radius: 8px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    transition: background-color 0.3s ease;
+}
+
+.title {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: var(--title-color);
+    transition: color 0.3s ease;
+}
+
+.form-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: var(--bg-form);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.input-field {
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    flex: 1;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.input-field:focus {
+    border-color: #e85d04;
+    box-shadow: 0 0 8px rgba(232, 93, 4, 0.5);
+    transform: scale(1.02);
+}
+
+.btn-add {
+    padding: 10px 20px;
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-add:hover {
+    background-color: var(--btn-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.inTab {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: var(--bg-table);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease;
+}
+
+.inTab thead {
+    background-color: var(--btn-bg);
+}
+
+.inTab th {
+    padding: 15px;
+    text-align: left;
+    font-weight: bold;
+    color: var(--btn-text);
+    border-bottom: 2px solid var(--border-color);
+}
+
+.inTab tbody {
+    background-color: var(--bg-table);
+}
+
+.inTab td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.2s ease;
+}
+
+.inTab tbody tr:hover {
+    background-color: var(--hover-row);
+    cursor: pointer;
+    transform: scale(1.01);
+    transition: all 0.2s ease;
+}
+
+.inTab tfoot {
+    background-color: var(--bg-form);
+    font-weight: bold;
+}
+
+.inTab tfoot td {
+    padding: 15px;
+    text-align: center;
+    font-size: 16px;
+    color: var(--title-color);
+    border-top: 2px solid var(--border-color);
+}
+
+.btn-delete {
+    padding: 6px 12px;
+    background-color: var(--delete-btn);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn-delete:hover {
+    background-color: var(--delete-hover);
+    transform: scale(1.1);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+@keyframes loading {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(-20px);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(1.05);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.loading {
+    animation: loading 0.5s ease-in-out;
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+    background-color: var(--btn-hover);
+    transform: scale(1.05);
+}
