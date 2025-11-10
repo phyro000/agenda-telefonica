@@ -3,6 +3,7 @@ const fnameInput=document.getElementById('fname');
 const numbInput=document.getElementById('numb');
 
 const addBtn=document.getElementById('addPer');
+const loadingOverlay = document.getElementById('loadingOverlay');
 
 const tableBody=document.getElementById('tableBody');
 
@@ -31,29 +32,34 @@ function addPerson(){
         return;
     }
 
-    const newRow=document.createElement('tr');
-
-    newRow.classList.add('loading');
-
-    newRow.innerHTML = `
-        <td>${lname}</td>
-        <td>${fname}</td>
-        <td>${numb}</td>
-        <td><button class="btn-delete" onclick="deletePerson(this)">Sterge</button></td>
-    `;
-
-    tableBody.appendChild(newRow);
-
-    totalPersons++;
-    updateCounter();
-
-    lnameInput.value='';
-    fnameInput.value='';
-    numbInput.value ='';
+    loadingOverlay.classList.add('active');
 
     setTimeout(() => {
-        newRow.classList.remove('loading');
-    }, 500);
+        const newRow=document.createElement('tr');
+        newRow.classList.add('loading');
+
+        newRow.innerHTML = `
+            <td>${lname}</td>
+            <td>${fname}</td>
+            <td>${numb}</td>
+            <td><button class="btn-delete" onclick="deletePerson(this)">Sterge</button></td>
+        `;
+
+        tableBody.appendChild(newRow);
+
+        totalPersons++;
+        updateCounter();
+
+        lnameInput.value='';
+        fnameInput.value='';
+        numbInput.value='';
+
+        loadingOverlay.classList.remove('active');
+
+        setTimeout(() => {
+            newRow.classList.remove('loading');
+        }, 2500);
+    }, 2000);
 }
 
 addBtn.addEventListener('click', addPerson);
